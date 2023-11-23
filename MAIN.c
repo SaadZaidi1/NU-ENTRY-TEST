@@ -124,6 +124,7 @@ void checker(char *ques[30])
 	{
 		if(i<10)			//CHECKING ANS OF ADVANCE MATHS PORTION
 		{
+		printf("ADVANCE MATHS PORTION:\n);
 		char ans1;
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
@@ -147,6 +148,7 @@ void checker(char *ques[30])
 		else if(i<20)		//CHECKING ANS OF BASIC MATHS QUESTIONS
 		{
 		char ans1;
+		printf("BASIC MATHS PORTION:\n);
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
 		system("cls");
@@ -169,6 +171,7 @@ void checker(char *ques[30])
 		else if(i<25)		//CHECKING ANS OF IQ PORTION
 		{
 		char ans1;
+		printf("IQ PORTION:\n);
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
 		system("cls");
@@ -191,6 +194,7 @@ void checker(char *ques[30])
 		else if(i<30)				//CHECKING ANS OF ENGLISH PORTION
 		{
 		char ans1;
+		printf("ENGLISH PORTION:\n);
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
 		system("cls");
