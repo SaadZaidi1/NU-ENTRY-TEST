@@ -62,6 +62,7 @@ void SKIP(char *ques[30],char ans[30],int skip[30],int adv,int basic,int iq,int 
 			char ans1;
 			printf("%s",ques[i]);
 			scanf(" %c",&ans1);
+			system("cls");
 			if(ans1==ans[i])            //if ans is correct we will update the score by +1  in the respective portion
 			{
 				if(i<10)
@@ -126,7 +127,7 @@ void checker(char *ques[30])
 		char ans1;
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
-		
+		system("cls");
 		if(ans1==ans[i])
 		{
 			adv++;
@@ -148,7 +149,7 @@ void checker(char *ques[30])
 		char ans1;
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
-		
+		system("cls");
 		if(ans1==ans[i])
 		{
 			basic++;
@@ -170,7 +171,7 @@ void checker(char *ques[30])
 		char ans1;
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
-		
+		system("cls");
 		if(ans1==ans[i])
 		{
 			iq++;
@@ -192,7 +193,7 @@ void checker(char *ques[30])
 		char ans1;
 		printf("%s",ques[i]);
 		scanf(" %c",&ans1);
-		
+		system("cls");
 		if(ans1==ans[i])
 		{
 			english++;
