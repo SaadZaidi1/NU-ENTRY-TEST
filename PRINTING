@@ -1,24 +1,29 @@
 #include <stdio.h>
-
-int total = 0, basic = 0, adv = 0, english = 0, iq = 0;
-
-struct TotalResult {
+int total=0, basic = 0, adv = 0, english = 0, iq = 0,HSSC,matric;
+struct TotalResult { 
     int advance;
     int basic;
     int iq;
     int english;
     int total;
 };
-
 void Total_Result(struct TotalResult res) {
     printf("Advance Maths %d/10\n", res.advance);
     printf("Basic Maths %d/10\n", res.basic);
     printf("IQ %d/5\n", res.iq);
     printf("English %d/5\n", res.english);
-    printf("TOTAL %d/30\n", res.total);
-
+    printf("TOTAL %d/30\n\n", res.total);
+    printf("Enter your percentage in MATRIC: ");
+    scanf("%d", &matric);
+    printf("Enter your percentage in HSSC-1: ");
+    scanf("%d", &HSSC);
+    MeritCalculator(res, matric, HSSC);
 }
-
+void MeritCalculator(struct TotalResult res, int matric, int HSSC) {
+    float merit;
+    merit=(matric*0.1)+(HSSC*0.4)+((res.total)*1.67);
+    printf("MERIT: %.2f",merit);
+}
 void main() {
     struct TotalResult res = {adv, basic, iq, english, total};
     Total_Result(res);
