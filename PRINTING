@@ -1,21 +1,25 @@
-#include<stdio.h>
-int total,basic,adv,english,iq; //Assign scores as global variable
-struct TotalResult{    //Making a structure of score in indivisual
+#include <stdio.h>
+
+int total = 0, basic = 0, adv = 0, english = 0, iq = 0;
+
+struct TotalResult {
     int advance;
     int basic;
     int iq;
     int english;
     int total;
 };
-void Total_Result(struct TotalResult res){ //Making a function to print structure
-    printf("Advance Maths %d/10\n",res.advance);
-    printf("Basic Maths %d/10\n",res.basic);
-    printf("IQ %d/5\n",res.iq);
-    printf("ENGLISH %d/10\n",res.english);
-    printf("TOTAL %d/30\n",res.total);
+
+void Total_Result(struct TotalResult res) {
+    printf("Advance Maths %d/10\n", res.advance);
+    printf("Basic Maths %d/10\n", res.basic);
+    printf("IQ %d/5\n", res.iq);
+    printf("English %d/5\n", res.english);
+    printf("TOTAL %d/30\n", res.total);
+
 }
-void main() //Main is used to storing value to structure and calling function
-{
-    struct TotalResult res={adv,basic,iq,english,total};
+
+void main() {
+    struct TotalResult res = {adv, basic, iq, english, total};
     Total_Result(res);
 }
