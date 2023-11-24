@@ -1,13 +1,13 @@
 #include <stdio.h>
-int total=0, basic = 0, adv = 0, english = 0, iq = 0,HSSC,matric;
-struct TotalResult { 
+int total=0, basic = 0, adv = 0, english = 0, iq = 0,HSSC,matric;//Introducing them as global variable as they are used in both main and in user-defined function
+struct TotalResult { //Using structures to store indivisual variables
     int advance;
     int basic;
     int iq;
     int english;
     int total;
 };
-void Total_Result(struct TotalResult res) {
+void Total_Result(struct TotalResult res) {//Function to print structure
     printf("Advance Maths %d/10\n", res.advance);
     printf("Basic Maths %d/10\n", res.basic);
     printf("IQ %d/5\n", res.iq);
@@ -17,14 +17,15 @@ void Total_Result(struct TotalResult res) {
     scanf("%d", &matric);
     printf("Enter your percentage in HSSC-1: ");
     scanf("%d", &HSSC);
-    MeritCalculator(res, matric, HSSC);
+    MeritCalculator(res, matric, HSSC);//Function calling for merit calculaation
 }
-void MeritCalculator(struct TotalResult res, int matric, int HSSC) {
+void MeritCalculator(struct TotalResult res, int matric, int HSSC) {//Calculating Merit On the basis of test score hssc result and matric result
     float merit;
     merit=(matric*0.1)+(HSSC*0.4)+((res.total)*1.67);
     printf("MERIT: %.2f",merit);
 }
 void main() {
+    //Main is used for calling function and Inserting values in the structure
     struct TotalResult res = {adv, basic, iq, english, total};
     Total_Result(res);
 }
