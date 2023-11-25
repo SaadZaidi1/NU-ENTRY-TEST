@@ -5,6 +5,40 @@
 #include <unistd.h>
 #define _GNU_SOURCE
 
+int total=0,basic=0,adv=0,english=0,iq=0;
+float hssc,ssc;
+struct TotalResult 
+{
+    int advance;
+    int basic;
+    int iq;
+    int english;
+    int total;
+};
+
+void MeritCalculator(struct TotalResult res, int ssc, int hssc) 
+{//Calculating Merit On the basis of test score hssc result and matric result
+    float merit;
+    merit=(ssc*0.1)+(hssc*0.4)+((res.total)*1.67);
+    printf("MERIT: %.2f",merit);
+}
+
+void Total_Result(struct TotalResult res,FILE *newFile) 
+{
+	res.total=res.advance+res.basic+res.english+res.iq;
+    printf("Advance Maths %d/10\n", res.advance);
+    printf("Basic Maths %d/10\n", res.basic);
+    printf("IQ %d/5\n", res.iq);
+    printf("English %d/5\n", res.english);
+    printf("TOTAL %d/30\n", res.english+res.advance+res.basic+res.iq);
+    fprintf(newFile,"Advance Maths %d/10\n", res.advance);
+    fprintf(newFile,"Basic Maths %d/10\n", res.basic);
+    fprintf(newFile,"IQ %d/5\n", res.iq);
+    fprintf(newFile,"English %d/5\n", res.english);
+    fprintf(newFile,"TOTAL %d/30\n", res.english+res.advance+res.basic+res.iq);
+    MeritCalculator(res, ssc, hssc);
+}
+
 void Timer(int seconds) 
 {
     int h = seconds / 3600;					//converting seconds into minutes and hours..
@@ -114,7 +148,7 @@ void checker(char *ques[30])
 	char ans[30]={'A','C','A','D','A','A','B','B','B','C','B','D','B','B','D','B','B','B','B','B','B','A','A','C','C','B','D','D','B','D'};
 	
 	int i,j,skip[30],wrong=0;
-	int total=0,basic=0,adv=0,english=0,iq=0;
+	
 	
 	for(i=0;i<30;i++)
 	{
@@ -259,7 +293,8 @@ void question()
 
 int main()
 {
-	 int seconds=360;
+	char newFileName[10];
+    int seconds=360;
 	// Find the last file
     int lastRollNumber = findLastFile();
 
@@ -273,10 +308,8 @@ int main()
 
         // Increment the last roll number by 1
         int newRollNumber = lastRollNumber + 1;
-        printf("New Roll Number: %d\n", newRollNumber);
-        
+        printf("New Roll Number: %d\n", newRollNumber);     
         // Create a new file with the next roll number
-        char newFileName[10];
         snprintf(newFileName, sizeof(newFileName), "%04d", newRollNumber);
 
         FILE *newFile = fopen(newFileName, "w");
@@ -285,12 +318,25 @@ int main()
             perror("Error creating new file");
             return 1;
         }
+        char name[100];
         // Write data to the new file
+        printf("Enter Your name: ");
+        fgets(name,100,stdin);
+        fflush(stdin);
+        printf("Enter your SSC percentage: ");
+        scanf("%f",&ssc);
+        printf("Enter your HSSC-1 percentage: ");
+        scanf("%f",&hssc);
+        fprintf(newFile, "Name: %s\n",name);
         fprintf(newFile, "Candidate Roll No: %d\n", newRollNumber);
+        fprintf(newFile, "SSC percentage: %.2f\n", ssc);
+        fprintf(newFile, "HSCC-1 Percentage: %.2f\n", hssc);
         fclose(newFile);
         printf("New file created: %s\n", newFileName);
     }
     question();
+    struct TotalResult res = {adv, basic, iq, english, total};
+	FILE *newFile = fopen(newFileName, "a");
+    Total_Result(res,newFile);
+    fclose(newFile);
 }
-
-
