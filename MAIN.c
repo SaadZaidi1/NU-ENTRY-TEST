@@ -16,11 +16,13 @@ struct TotalResult
     int total;
 };
 
-void MeritCalculator(struct TotalResult res, int ssc, int hssc) 
-{//Calculating Merit On the basis of test score hssc result and matric result
+void MeritCalculator(struct TotalResult res, int ssc, int hssc, FILE *newFile) 
+{
+//Calculating Merit On the basis of test score hssc result and matric result
     float merit;
     merit=(ssc*0.1)+(hssc*0.4)+((res.total)*1.67);
-    printf("MERIT: %.2f",merit);
+    fprintf(newFile,"MERIT: %.2f",merit);
+    printf("MERIT:%.2f",merit);
 }
 
 void Total_Result(struct TotalResult res,FILE *newFile) 
@@ -36,7 +38,7 @@ void Total_Result(struct TotalResult res,FILE *newFile)
     fprintf(newFile,"IQ %d/5\n", res.iq);
     fprintf(newFile,"English %d/5\n", res.english);
     fprintf(newFile,"TOTAL %d/30\n", res.english+res.advance+res.basic+res.iq);
-    MeritCalculator(res, ssc, hssc);
+    MeritCalculator(res, ssc, hssc,newFile);
 }
 
 void Timer(int seconds) 
@@ -264,7 +266,7 @@ void question()
         "6. If f(x) = 2x^2 + 3x - 1, what is the derivative of f(x) with respect to x?\n   A) 4x + 3\n   B) 2x^2 + 3x - 1\n   C) 2x + 3\n   D) 4x^2 + 3\n",
         "7. What is the area of a circle with a radius of 5 units?\n   A) 10 square units\n   B) 25 square units\n   C) 50 square units\n   D) 5p square units\n",
         "8. If log(base 2) 16 = 4, what is log(base 2) 64?\n   A) 4\n   B) 5\n   C) 6\n   D) 3\n",
-        "9. In a geometric progression, if the first term is 2 and the common ratio is 3, what is the fourth term?\n   A) 6\n   B) 18\n   C) 9\n",
+        "9. In a geometric progression, if the first term is 2 and the common ratio is 3, what is the fourth term?\n   A) 6\n   B) 18\n   C) 9\n   D)NONE\n",
         "10. What is the solution to the equation 2x^2 + 5x - 3 = 0?\n    A) x = 1, x = -3/2\n    B) x = 3, x = -1/2\n    C) x = 1, x = -1/2\n    D) x = 3, x = -3/2\n",
         "11. What is the square of 9?\n   A) 63\n   B) 81\n   C) 72\n   D) 64\n",
         "12. If a triangle has sides measuring 3 cm, 4 cm, and 5 cm, what type of triangle is it?\n   A) Equilateral\n   B) Isosceles\n   C) Scalene\n   D) Right-angled\n",
